@@ -1,0 +1,4 @@
+const fs = require('fs');
+const content = 'import { initializeApp, getApps } from "firebase/app";\nimport { getAuth } from "firebase/auth";\nimport { getFirestore } from "firebase/firestore";\nimport { getStorage } from "firebase/storage";\n\nconst firebaseConfig = {\n  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,\n  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,\n  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,\n  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,\n  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,\n  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,\n};\n\nconst app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];\nconst auth = getAuth(app);\nconst db = getFirestore(app);\nconst storage = getStorage(app);\n\nexport { app, auth, db, storage };';
+fs.writeFileSync('/Users/matsuzakitsuyoshi/Desktop/kami-chat/src/lib/firebase.ts', content);
+console.log('Done!');
